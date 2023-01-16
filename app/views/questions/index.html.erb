@@ -1,1 +1,9 @@
 <%= link_to "Create Question", new_question_path %>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li>
+      Title: <%= question.title %> | Type: <%= question.questionable_type %>
+    </li>
+  <% end %>
+</ul>
