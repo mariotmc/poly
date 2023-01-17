@@ -1,0 +1,12 @@
+<%= link_to "All Questions", root_path %>
+<%= link_to "Add Answer", new_question_answer_path(@question) %>
+
+<h1><%= @question.title %></h1>
+<p>Type: <%= @question.questionable_type %></p>
+
+<h4>Answer Options:</h4>
+<ul>
+  <% @answers.each do |answer| %>
+    <li><%= answer.content %> | Correct: <%= answer.correct %></li>
+  <% end %>
+</ul>

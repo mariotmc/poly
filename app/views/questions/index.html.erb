@@ -1,9 +1,11 @@
-<%= link_to "Create Question", new_question_path %>
+<%= link_to "Create Multiple Choice Question", new_multiple_choice_question_path %>
+
+<h3>Questions</h3>
 
 <ul>
   <% @questions.each do |question| %>
     <li>
-      Title: <%= question.title %> | Type: <%= question.questionable_type %>
+      <%= link_to question.title, multiple_choice_question_path(question) %>
     </li>
   <% end %>
 </ul>

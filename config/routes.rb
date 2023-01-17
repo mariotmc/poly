@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "questions#index"
-  resources :questions
+  resources :questions, shallow: true do
+    resources :answers
+  end
+  resources :multiple_choice_questions
 end
