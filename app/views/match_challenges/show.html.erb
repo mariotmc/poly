@@ -1,0 +1,50 @@
+<%= link_to "All Questions", root_path %>
+<%= link_to "Add a Pair", new_match_challenge_pair_path(@question) %>
+
+<h1><%= @question.title %></h1>
+<p>Type: <%= @question.questionable_type %></p>
+
+<h4>Pairs to match:</h4>
+<div style="display: flex;">
+  <ul style="list-style: none; padding-left: 0px;">
+    <% @sources.each do |source| %>
+      <li style="display: flex;"
+          data-controller="pair-positions"
+          data-pair-positions-element-type-value="source"
+          data-pair-positions-element-value="<%= source.id %>"
+      >
+        <div>
+          <button
+            data-pair-positions-target="buttonUp"
+            data-action="click->pair-positions#positionUp">Up</button>
+          <button
+            data-pair-positions-target="buttonDown"
+            data-action="click->pair-positions#positionDown">Down</button>
+        </div>
+        <div><%= source.content %> (Position: <%= source.position %>)</div>
+      </li>
+    <% end %>
+  </ul>
+
+  <ul style="list-style: none;">
+    <% @partners.each do |partner| %>
+      <li style="display: flex;"
+          data-controller="pair-positions"
+          data-pair-positions-element-type-value="partner"
+          data-pair-positions-element-value="<%= partner.id %>"
+      >
+        <div><%= partner.content %> (Position: <%= partner.position %>)</div>
+        <div>
+          <button
+            data-pair-positions-target="buttonUp"
+            data-action="click->pair-positions#positionUp">Up</button>
+          <button
+            data-pair-positions-target="buttonDown"
+            data-action="click->pair-positions#positionDown">Down</button>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<button>Submit</button>

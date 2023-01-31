@@ -1,11 +1,17 @@
-<%= link_to "Create Multiple Choice Question", new_multiple_choice_question_path %>
+<%= link_to "Create Multiple Choice Challenge", new_multiple_choice_challenge_path, {:style=>'display: block;'} %>
+<%= link_to "Create Match Challenge", new_match_challenge_path, {:style=>'display: block;'} %>
 
 <h3>Questions</h3>
 
 <ul>
   <% @questions.each do |question| %>
     <li>
-      <%= link_to question.title, multiple_choice_question_path(question) %>
+      <% case question.questionable_type %>
+      <% when "MultipleChoiceChallenge" %>
+        <%= link_to question.title, multiple_choice_challenge_path(question) %>
+      <% when "MatchChallenge" %>
+        <%= link_to question.title, match_challenge_path(question) %>
+      <% end %>
     </li>
   <% end %>
 </ul>

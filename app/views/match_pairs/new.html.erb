@@ -1,0 +1,11 @@
+<%= link_to "All Questions", root_path %>
+
+<%= form_with model: @match_pair, url: match_challenge_pairs_path do |f| %>
+  <div style="display: flex">
+    <%= f.text_field :source, placeholder: "Enter a source here..."%>
+    <%= f.text_field :partner, placeholder: "Enter a partner here..."%>
+    <%= f.hidden_field :match_challenge_id, value: @match_challenge %>
+  </div>
+  
+  <%= f.submit "Create" %>
+<% end %>

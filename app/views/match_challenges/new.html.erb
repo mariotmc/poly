@@ -1,0 +1,6 @@
+<%= link_to "All Questions", root_path %>
+
+<%= form_with model: @question, url: match_challenges_path do |f| %>
+  <%= f.text_field :title, placeholder: "Enter a question here..."%>
+  <%= f.submit "Create" %>
+<% end %>
