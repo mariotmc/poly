@@ -6,7 +6,7 @@
 
 <h4>Answer Options:</h4>
 <ul>
-  <% @answers.each do |answer| %>
-    <li><%= answer.content %> | Correct: <%= answer.correct %></li>
+  <% @choices.each do |choice| %>
+    <li><%= choice.content %> | Correct: <%= choice.correct %></li>
   <% end %>
 </ul>

@@ -1,9 +1,9 @@
 <%= link_to "Back to Question", @question_path %>
 
-<%= form_with model: @answer, url: multiple_choice_challenge_choices_path do |f| %>
+<%= form_with model: @choice, url: multiple_choice_challenge_choices_path do |f| %>
   <div style="display: flex">
     <%= f.check_box :correct, class: "h-6 w-6 text-green-500 transition duration-150 ease-in-out rounded-lg border-gray-200" %>
-    <%= f.text_field :content, class: "form-field", autofocus: true, placeholder: "Enter an answer here..." %>
+    <%= f.text_field :content, class: "form-field", autofocus: true, placeholder: "Enter a choice here..." %>
     <%= f.submit "Add" %>
   </div>
 <% end %>

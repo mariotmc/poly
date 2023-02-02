@@ -3,19 +3,19 @@ class ChoicesController < ApplicationController
   before_action :set_question_path, only: %i[new create]
 
   def new
-    @answer = @question.multiple_choice_challenge.choices.new
+    @choice = @question.multiple_choice_challenge.choices.new
   end
   
   def create
-    @answer = @question.multiple_choice_challenge.choices.new(answer_params)
+    @choice = @question.multiple_choice_challenge.choices.new(choice_params)
 
-    if @answer.save
+    if @choice.save
       redirect_to @question_path
     end
   end
 
   private
-    def answer_params
+    def choice_params
       params.require(:choice).permit(:correct, :content)
     end
 

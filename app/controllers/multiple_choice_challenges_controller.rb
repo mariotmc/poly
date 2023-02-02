@@ -13,7 +13,7 @@ class MultipleChoiceChallengesController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.multiple_choice_challenge.choices
+    @choices = @question.multiple_choice_challenge.choices
   end
 
   private
