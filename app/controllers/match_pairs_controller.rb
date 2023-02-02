@@ -1,5 +1,6 @@
 class MatchPairsController < ApplicationController
-  before_action :set_match_challenge, only: %w[new]
+  before_action :set_question, only: %w[new create]
+  before_action :set_question_path, only: %w[new create]
 
   def new
     @match_pair = MatchPair.new
@@ -9,7 +10,7 @@ class MatchPairsController < ApplicationController
     @match_pair = MatchPair.new(match_pair_params)
     
     if @match_pair.save
-      redirect_to root_path
+      redirect_to @question_path
     end
   end
 
@@ -18,7 +19,11 @@ class MatchPairsController < ApplicationController
       params.require(:match_pair).permit(:source, :partner, :match_challenge_id)
     end
 
-    def set_match_challenge
-      @match_challenge = Question.find(params[:match_challenge_id]).match_challenge.id
+    def set_question
+      @question = Question.find(params[:match_challenge_id])
+    end
+
+    def set_question_path
+      @question_path = match_challenge_path(@question)
     end
 end

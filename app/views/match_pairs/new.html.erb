@@ -4,7 +4,7 @@
   <div style="display: flex">
     <%= f.text_field :source, placeholder: "Enter a source here..."%>
     <%= f.text_field :partner, placeholder: "Enter a partner here..."%>
-    <%= f.hidden_field :match_challenge_id, value: @match_challenge %>
+    <%= f.hidden_field :match_challenge_id, value: @question.match_challenge.id %>
   </div>
   
   <%= f.submit "Create" %>

@@ -1,6 +1,6 @@
 class ChoicesController < ApplicationController
-  before_action :set_question, only: %i[new create]
-  before_action :set_question_path, only: %i[new create]
+  before_action :set_question, only: %w[new create]
+  before_action :set_question_path, only: %w[new create]
 
   def new
     @choice = @question.multiple_choice_challenge.choices.new
