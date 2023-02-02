@@ -13,8 +13,9 @@ class MatchChallengesController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @sources = @question.match_challenge.sources.sort
-    @partners = @question.match_challenge.partners.sort
+    @match_challenge = @question.match_challenge
+    @sources = @match_challenge.sources.order_by_position
+    @partners = @match_challenge.partners.order_by_position
   end
 
   private

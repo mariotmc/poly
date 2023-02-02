@@ -10,6 +10,7 @@
     <% @sources.each do |source| %>
       <li style="display: flex;"
           data-controller="pair-positions"
+          data-pair-positions-match-challenge-value="<%= @match_challenge.id %>"
           data-pair-positions-element-type-value="source"
           data-pair-positions-element-value="<%= source.id %>"
       >
@@ -21,7 +22,7 @@
             data-pair-positions-target="buttonDown"
             data-action="click->pair-positions#positionDown">Down</button>
         </div>
-        <div><%= source.content %> (Position: <%= source.position %>)</div>
+        <div><%= source.content %> (Position: <%= source.position %>, Correct: <%= source.correct %>)</div>
       </li>
     <% end %>
   </ul>
@@ -30,10 +31,11 @@
     <% @partners.each do |partner| %>
       <li style="display: flex;"
           data-controller="pair-positions"
+          data-pair-positions-match-challenge-value="<%= @match_challenge.id %>"
           data-pair-positions-element-type-value="partner"
           data-pair-positions-element-value="<%= partner.id %>"
       >
-        <div><%= partner.content %> (Position: <%= partner.position %>)</div>
+        <div><%= partner.content %> (Position: <%= partner.position %>, Correct: <%= partner.source.correct %>)</div>
         <div>
           <button
             data-pair-positions-target="buttonUp"
@@ -47,4 +49,6 @@
   </ul>
 </div>
 
-<button>Submit</button>
+<button data-controller="pair-positions"
+        data-action="click->pair-positions#checkSubmission"
+        data-pair-positions-match-challenge-value="<%= @match_challenge.id %>">Submit</button>

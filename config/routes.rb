@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   post '/position_up', to: 'positions#position_up'
   post '/position_down', to: 'positions#position_down'
+  post '/check_submission', to: 'positions#check_submission'
 end
